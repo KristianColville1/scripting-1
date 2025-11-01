@@ -1,0 +1,18 @@
+# Assignment 2 Gitignore
+example.sh
+
+# Data files (keep structure but ignore content)
+src/data/*.txt
+!src/data/.gitkeep
+
+# Temporary files
+*.tmp
+*.swp
+*~
+.DS_Store
+
+# Backup files
+*.bak
+*.backup
+ideas/
+docs/

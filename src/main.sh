@@ -50,7 +50,6 @@ display_welcome_banner
 
 # Main loop
 while true; do
-  clear_screen
   display_main_menu
   read -r -p "$(echo -e '\nEnter your choice (1-5): ')" choice
   
@@ -74,6 +73,7 @@ while true; do
       exit 0
       ;;
     *)
+      clear_screen
       display_message "error" "Invalid option. Please try again."
       sleep 1
       ;;

@@ -25,6 +25,7 @@ main_tickets_menu() {
         view_all_tickets
         ;;
       5)
+        clear_screen
         return 0  # Return to main menu
         ;;
       6|[Ee][Xx][Ii][Tt])

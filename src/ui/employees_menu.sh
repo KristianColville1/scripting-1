@@ -25,6 +25,7 @@ main_employees_menu() {
         view_all_employees
         ;;
       5)
+        clear_screen
         return 0  # Return to main menu
         ;;
       6|[Ee][Xx][Ii][Tt])

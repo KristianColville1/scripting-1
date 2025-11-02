@@ -20,16 +20,16 @@ display_message() {
   
   case "$type" in
     "error")
-      echo -e "${RED}[ERROR]${NC} $message"
+      echo -e "${RED}ERROR ----> $message ${NC}"
       ;;
     "success")
-      echo -e "${GREEN}[SUCCESS]${NC} $message"
+      echo -e "${GREEN}SUCCESS ----> $message ${NC}"
       ;;
     "warning")
-      echo -e "${YELLOW}[WARNING]${NC} $message"
+      echo -e "${YELLOW}WARNING ----> $message ${NC}"
       ;;
     "info")
-      echo -e "${BLUE}[INFO]${NC} $message"
+      echo -e "${BLUE}INFO ----> $message ${NC}"
       ;;
     *)
       echo "$message"

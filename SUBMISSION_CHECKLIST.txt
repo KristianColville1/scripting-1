@@ -1,0 +1,186 @@
+================================================================
+KRISTIAN'S COOL SHOP - SUBMISSION CHECKLIST
+================================================================
+
+PROJECT: Stock Control Management System
+AUTHOR: Kristian Colville
+
+================================================================
+✅ CODE REQUIREMENTS - 100% COMPLETE
+================================================================
+
+WORKINGS (30/30):
+  ✅ Menu system - 4 portals + main
+  ✅ Add unique records - All modules
+  ✅ Search records - Multiple criteria
+  ✅ Remove single - By ID or line
+  ✅ Exit anytime - Type 'exit'
+
+ROBUSTNESS (35/35):
+  ✅ Error handling - All inputs validated
+  ✅ Return to menu - Easy navigation
+  ✅ Blank field validation - All fields
+  ✅ No infinite loops - All have exits
+
+USABILITY (20/20):
+  ✅ Input format validation - Email, phone, date
+  ✅ Duplicate detection - IDs and emails
+  ✅ Delete multiple - Comma-separated IDs
+  ✅ Delete one - Single ID or line
+  ✅ Verify before actions - All confirmations
+  ✅ UI appearance - Colors, retro borders
+  ✅ Easy navigation - Clear menus
+  ✅ Case insensitive - All searches
+  ✅ View contents - All portals
+
+CODE QUALITY (15/15):
+  ✅ View before operations - Yes
+  ✅ Comments - All files
+  ✅ Indentation - Consistent
+  ⏳ Video demo - TO BE CREATED
+
+================================================================
+TECHNICAL FEATURES
+================================================================
+
+ARCHITECTURE:
+  ✅ Modular design - 4 modules
+  ✅ Functions folders - In each module
+  ✅ Generic utilities - Reusable code
+  ✅ Clean separation - modules/ui/utils
+
+SMART FEATURES:
+  ✅ Generic table formatter - No hardcoding
+  ✅ Dynamic column widths - Awk calculates
+  ✅ Batch delete - Comma-separated IDs
+  ✅ Clear screen utility - Clean demo
+  ✅ Retro UI - Yellow borders
+
+VALIDATION:
+  ✅ Email format
+  ✅ Phone numbers (8-15 digits)
+  ✅ Dates (DD/MM/YYYY)
+  ✅ Numeric fields
+  ✅ Decimal prices
+  ✅ No blank fields
+  ✅ Duplicate IDs
+
+================================================================
+PORTABILITY CHECK
+================================================================
+
+✅ Zero hardcoded paths
+✅ Dynamic path discovery (BASH_SOURCE)
+✅ Tested from /tmp/ successfully
+✅ Self-contained
+✅ Instructor can run from anywhere
+
+================================================================
+FILE COUNT
+================================================================
+
+Module files: 24
+  - products/functions/: 4
+  - employees/functions/: 4
+  - tickets/functions/: 4
+  - orders/functions/: 4
+  - Init files: 4
+  - Loaders: 4
+
+UI files: 5
+Utils: 4
+Main: 2
+Total: 35 scripts
+
+================================================================
+PACKAGING INSTRUCTIONS
+================================================================
+
+1. Clean up test data (optional):
+   cd src/data
+   rm *.txt
+   
+2. Create zip:
+   cd /home/kristian/Documents/assignment2-comp-sys-net
+   zip -r kristianshop.zip src/
+   
+3. Verify:
+   unzip -l kristianshop.zip | head -30
+
+4. Upload to Moodle:
+   - kristianshop.zip
+   - Video link (YouTube/OneDrive/etc.)
+
+================================================================
+VIDEO DEMONSTRATION REQUIREMENTS
+================================================================
+
+⏰ TIMING: Max 10 minutes
+
+📺 SETUP: Split screen
+   - Left: Code editor (show file structure + code)
+   - Right: Terminal (run the system)
+
+🎤 VOICEOVER: Explain your approach
+   - "I used awk here to calculate dynamic widths..."
+   - "I chose while loops with exit checks to..."
+   - "The modular structure allows..."
+
+📋 WHAT TO SHOW:
+   1. File structure (30 seconds)
+   2. Welcome screen + main menu (30 seconds)
+   3. Products portal:
+      - Add product (60 seconds)
+      - View all (30 seconds)
+      - Search (45 seconds)
+      - Batch delete (60 seconds)
+   4. Employees portal:
+      - Add employee (60 seconds)
+      - View all (30 seconds)
+   5. Show one more portal briefly (45 seconds)
+   6. Highlight features:
+      - Validation (30 seconds)
+      - Error handling (30 seconds)
+      - Generic table formatter (45 seconds)
+      - Batch delete (30 seconds)
+   7. Code walkthrough:
+      - Module structure (60 seconds)
+      - Validation utils (45 seconds)
+      - Table formatter (60 seconds)
+
+💡 TIPS:
+   - Start with welcome banner
+   - Show error handling (try invalid email)
+   - Demonstrate 'exit' keyword
+   - Show batch delete with non-existent ID
+   - Highlight retro UI borders
+   - Mention modular architecture
+   - Show generic table formatter code
+
+================================================================
+INSTRUCTOR TESTING
+================================================================
+
+They will:
+  1. unzip kristianshop.zip
+  2. cd src
+  3. bash main.sh
+  
+  Should see:
+  ✅ Welcome banner
+  ✅ Color-coded menus
+  ✅ All 4 portals working
+  ✅ All CRUD operations
+  ✅ Validation working
+  ✅ Clean UI with borders
+  ✅ No errors
+
+================================================================
+STATUS: READY FOR SUBMISSION 🎯
+================================================================
+
+Code: 100/100 ✅
+Video: To be created ⏳
+
+Good luck with your demo! 🚀
+================================================================

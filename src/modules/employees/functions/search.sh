@@ -57,33 +57,42 @@ search_employees() {
       1)
         read -r -p "Enter Employee ID: " search_term
         check_exit "$search_term" && return 0
+        clear_screen
         echo -e "\n${CYAN}Search Results:${NC}"
         search_employees_formatted 1 "$search_term"
+        read -r -p "Press Enter to continue..."
         break
         ;;
       2)
         read -r -p "Enter Employee Name: " search_term
         check_exit "$search_term" && return 0
+        clear_screen
         echo -e "\n${CYAN}Search Results:${NC}"
         search_employees_formatted 2 "$search_term"
+        read -r -p "Press Enter to continue..."
         break
         ;;
       3)
         read -r -p "Enter Role: " search_term
         check_exit "$search_term" && return 0
+        clear_screen
         echo -e "\n${CYAN}Search Results:${NC}"
         search_employees_formatted 3 "$search_term"
+        read -r -p "Press Enter to continue..."
         break
         ;;
       4)
         read -r -p "Enter Department: " search_term
         check_exit "$search_term" && return 0
+        clear_screen
         echo -e "\n${CYAN}Search Results:${NC}"
         search_employees_formatted 4 "$search_term"
+        read -r -p "Press Enter to continue..."
         break
         ;;
       *)
         display_message "error" "Invalid option. Please try again."
+        sleep 1
         ;;
     esac
   done

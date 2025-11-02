@@ -10,10 +10,13 @@ view_all_orders() {
   
   if [[ ! -s "$ORDERS_FILE" ]]; then
     display_message "warning" "No orders found in database."
+    sleep 2
     return 0
   fi
   
+  clear_screen
   echo -e "\n${CYAN}--- All Orders ---${NC}"
   format_table "$ORDERS_FILE" "yes"
+  read -r -p "Press Enter to continue..."
 }
 

@@ -37,6 +37,11 @@ display_message() {
   esac
 }
 
+# Clear screen utility
+clear_screen() {
+  clear
+}
+
 # Display welcome banner
 display_welcome_banner() {
   clear

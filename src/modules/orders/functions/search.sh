@@ -56,26 +56,33 @@ search_orders() {
       1)
         read -r -p "Enter Order ID: " search_term
         check_exit "$search_term" && return 0
+        clear_screen
         echo -e "\n${CYAN}Search Results:${NC}"
         search_orders_formatted 1 "$search_term"
+        read -r -p "Press Enter to continue..."
         break
         ;;
       2)
         read -r -p "Enter Product Name: " search_term
         check_exit "$search_term" && return 0
+        clear_screen
         echo -e "\n${CYAN}Search Results:${NC}"
         search_orders_formatted 2 "$search_term"
+        read -r -p "Press Enter to continue..."
         break
         ;;
       3)
         read -r -p "Enter Customer Name: " search_term
         check_exit "$search_term" && return 0
+        clear_screen
         echo -e "\n${CYAN}Search Results:${NC}"
         search_orders_formatted 3 "$search_term"
+        read -r -p "Press Enter to continue..."
         break
         ;;
       *)
         display_message "error" "Invalid option. Please try again."
+        sleep 1
         ;;
     esac
   done

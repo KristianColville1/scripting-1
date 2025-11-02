@@ -10,10 +10,13 @@ view_all_products() {
   
   if [[ ! -s "$PRODUCTS_FILE" ]]; then
     display_message "warning" "No products found in database."
+    sleep 2
     return 0
   fi
   
+  clear_screen
   echo -e "\n${CYAN}--- All Products ---${NC}"
   format_table "$PRODUCTS_FILE" "yes"
+  read -r -p "Press Enter to continue..."
 }
 

@@ -7,7 +7,6 @@
 # Main tickets menu loop
 main_tickets_menu() {
   while true; do
-    clear_screen
     display_tickets_menu
     read -r -p "$(echo -e '\nEnter your choice (1-6): ')" choice
     

@@ -16,11 +16,13 @@ add_order_record() {
     check_exit "$id" && return 0
     
     if ! validate_numeric "$id"; then
+      clear_screen
       display_message "error" "Order ID must be numeric."
       continue
     fi
     
     if grep -E -q "^${id}\|" "$ORDERS_FILE"; then
+      clear_screen
       display_message "error" "Order ID $id already exists."
       continue
     fi
@@ -32,6 +34,7 @@ add_order_record() {
     read -r -p "Product Name (or 'exit' to cancel): " product
     check_exit "$product" && return 0
     validate_not_blank "$product" && break
+    clear_screen
     display_message "error" "Product Name cannot be blank."
   done
   
@@ -40,6 +43,7 @@ add_order_record() {
     read -r -p "Customer Name (or 'exit' to cancel): " customer
     check_exit "$customer" && return 0
     validate_not_blank "$customer" && break
+    clear_screen
     display_message "error" "Customer Name cannot be blank."
   done
   
@@ -50,6 +54,7 @@ add_order_record() {
     if validate_email "$email"; then
       break
     else
+      clear_screen
       display_message "error" "Invalid email format."
     fi
   done
@@ -61,6 +66,7 @@ add_order_record() {
     if validate_phone "$phone"; then
       break
     else
+      clear_screen
       display_message "error" "Invalid phone format (8-15 digits)."
     fi
   done
@@ -72,6 +78,7 @@ add_order_record() {
     if validate_numeric "$quantity"; then
       break
     else
+      clear_screen
       display_message "error" "Quantity must be numeric."
     fi
   done
@@ -83,6 +90,7 @@ add_order_record() {
     if validate_decimal "$total"; then
       break
     else
+      clear_screen
       display_message "error" "Total must be a valid number."
     fi
   done
@@ -94,6 +102,7 @@ add_order_record() {
     if validate_date "$date"; then
       break
     else
+      clear_screen
       display_message "error" "Invalid date format. Use DD/MM/YYYY"
     fi
   done
@@ -113,10 +122,12 @@ add_order_record() {
   echo -e "----------------------------------------------------------------"
   
   if confirm_action "Add this order?"; then
+    clear_screen
     printf "%s|%s|%s|%s|%s|%s|%s|%s\n" "$id" "$product" "$customer" "$email" "$phone" "$quantity" "$total" "$date" >> "$ORDERS_FILE" \
       && display_message "success" "Order added successfully!" \
       || display_message "error" "Failed to write to orders file."
   else
+    clear_screen
     display_message "info" "Order not added."
   fi
 }

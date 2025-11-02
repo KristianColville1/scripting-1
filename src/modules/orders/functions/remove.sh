@@ -45,6 +45,7 @@ remove_order() {
         break
         ;;
       *)
+        clear_screen
         display_message "error" "Invalid option. Please try again."
         ;;
     esac
@@ -71,11 +72,13 @@ remove_order_by_id() {
   echo ""
   
   if confirm_action "Remove this order?"; then
+    clear_screen
     awk -F'|' -v id="$id" '$1 != id' "$ORDERS_FILE" > "$temp_file" \
       && mv "$temp_file" "$ORDERS_FILE" \
       && display_message "success" "Order removed successfully!" \
       || display_message "error" "Failed to remove order."
   else
+    clear_screen
     display_message "info" "Order not removed."
     rm -f "$temp_file"
   fi
@@ -86,6 +89,7 @@ remove_order_by_line() {
   local line_num="$1"
   
   if ! validate_numeric "$line_num"; then
+    clear_screen
     display_message "error" "Line number must be numeric."
     return 1
   fi
@@ -94,6 +98,7 @@ remove_order_by_line() {
   local total_lines=$(tail -n +2 "$ORDERS_FILE" | wc -l)
   
   if [[ "$line_num" -lt 1 ]] || [[ "$line_num" -gt "$total_lines" ]]; then
+    clear_screen
     display_message "error" "Line number out of range."
     return 1
   fi
@@ -106,6 +111,7 @@ remove_order_by_line() {
   echo ""
   
   if confirm_action "Remove this order?"; then
+    clear_screen
     sed -i "${line_to_remove}d" "$ORDERS_FILE" \
       && display_message "success" "Order removed successfully!" \
       || display_message "error" "Failed to remove order."

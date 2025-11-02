@@ -16,11 +16,13 @@ add_ticket_record() {
     check_exit "$id" && return 0
     
     if ! validate_numeric "$id"; then
+      clear_screen
       display_message "error" "Ticket ID must be numeric."
       continue
     fi
     
     if grep -E -q "^${id}\|" "$TICKETS_FILE"; then
+      clear_screen
       display_message "error" "Ticket ID $id already exists."
       continue
     fi
@@ -32,6 +34,7 @@ add_ticket_record() {
     read -r -p "Ticket Title (or 'exit' to cancel): " title
     check_exit "$title" && return 0
     validate_not_blank "$title" && break
+    clear_screen
     display_message "error" "Title cannot be blank."
   done
   
@@ -40,6 +43,7 @@ add_ticket_record() {
     read -r -p "Customer Name (or 'exit' to cancel): " customer
     check_exit "$customer" && return 0
     validate_not_blank "$customer" && break
+    clear_screen
     display_message "error" "Customer Name cannot be blank."
   done
   
@@ -50,6 +54,7 @@ add_ticket_record() {
     if validate_email "$email"; then
       break
     else
+      clear_screen
       display_message "error" "Invalid email format."
     fi
   done
@@ -61,6 +66,7 @@ add_ticket_record() {
     if validate_phone "$phone"; then
       break
     else
+      clear_screen
       display_message "error" "Invalid phone format (8-15 digits)."
     fi
   done
@@ -72,6 +78,7 @@ add_ticket_record() {
     read -r -p "Status (or 'exit' to cancel): " status
     check_exit "$status" && return 0
     validate_not_blank "$status" && break
+    clear_screen
     display_message "error" "Status cannot be blank."
   done
   
@@ -82,6 +89,7 @@ add_ticket_record() {
     read -r -p "Priority (or 'exit' to cancel): " priority
     check_exit "$priority" && return 0
     validate_not_blank "$priority" && break
+    clear_screen
     display_message "error" "Priority cannot be blank."
   done
   
@@ -92,6 +100,7 @@ add_ticket_record() {
     if validate_date "$date"; then
       break
     else
+      clear_screen
       display_message "error" "Invalid date format. Use DD/MM/YYYY"
     fi
   done
@@ -111,10 +120,12 @@ add_ticket_record() {
   echo -e "----------------------------------------------------------------"
   
   if confirm_action "Add this ticket?"; then
+    clear_screen
     printf "%s|%s|%s|%s|%s|%s|%s|%s\n" "$id" "$title" "$customer" "$email" "$phone" "$status" "$priority" "$date" >> "$TICKETS_FILE" \
       && display_message "success" "Ticket added successfully!" \
       || display_message "error" "Failed to write to tickets file."
   else
+    clear_screen
     display_message "info" "Ticket not added."
   fi
 }

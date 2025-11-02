@@ -16,11 +16,13 @@ add_product_record() {
     check_exit "$id" && return 0
     
     if ! validate_numeric "$id"; then
+      clear_screen
       display_message "error" "Product ID must be numeric."
       continue
     fi
     
     if grep -E -q "^${id}\|" "$PRODUCTS_FILE"; then
+      clear_screen
       display_message "error" "Product ID $id already exists."
       continue
     fi
@@ -32,6 +34,7 @@ add_product_record() {
     read -r -p "Product Name (or 'exit' to cancel): " name
     check_exit "$name" && return 0
     validate_not_blank "$name" && break
+    clear_screen
     display_message "error" "Product Name cannot be blank."
   done
   
@@ -40,6 +43,7 @@ add_product_record() {
     read -r -p "Category (or 'exit' to cancel): " category
     check_exit "$category" && return 0
     validate_not_blank "$category" && break
+    clear_screen
     display_message "error" "Category cannot be blank."
   done
   
@@ -50,6 +54,7 @@ add_product_record() {
     if validate_decimal "$price"; then
       break
     else
+      clear_screen
       display_message "error" "Price must be a valid number."
     fi
   done
@@ -61,6 +66,7 @@ add_product_record() {
     if validate_numeric "$quantity"; then
       break
     else
+      clear_screen
       display_message "error" "Quantity must be numeric."
     fi
   done
@@ -70,6 +76,7 @@ add_product_record() {
     read -r -p "Supplier Name (or 'exit' to cancel): " supplier
     check_exit "$supplier" && return 0
     validate_not_blank "$supplier" && break
+    clear_screen
     display_message "error" "Supplier Name cannot be blank."
   done
   
@@ -80,6 +87,7 @@ add_product_record() {
     if validate_email "$email"; then
       break
     else
+      clear_screen
       display_message "error" "Invalid email format."
     fi
   done
@@ -91,6 +99,7 @@ add_product_record() {
     if validate_phone "$phone"; then
       break
     else
+      clear_screen
       display_message "error" "Invalid phone format (8-15 digits)."
     fi
   done
@@ -110,10 +119,12 @@ add_product_record() {
   echo -e "----------------------------------------------------------------"
   
   if confirm_action "Add this product?"; then
+    clear_screen
     printf "%s|%s|%s|%s|%s|%s|%s|%s\n" "$id" "$name" "$category" "$price" "$quantity" "$supplier" "$email" "$phone" >> "$PRODUCTS_FILE" \
       && display_message "success" "Product added successfully!" \
       || display_message "error" "Failed to write to products file."
   else
+    clear_screen
     display_message "info" "Product not added."
   fi
 }

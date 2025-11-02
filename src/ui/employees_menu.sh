@@ -7,7 +7,6 @@
 # Main employees menu loop
 main_employees_menu() {
   while true; do
-    clear_screen
     display_employees_menu
     read -r -p "$(echo -e '\nEnter your choice (1-6): ')" choice
     

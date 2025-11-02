@@ -60,6 +60,7 @@ remove_emp_by_id() {
   local matches=$(awk -F'|' -v id="$id" '$1 == id' "$EMPLOYEES_FILE")
   
   if [[ -z "$matches" ]]; then
+    clear_screen
     display_message "error" "No employee found with ID: $id"
     rm -f "$temp_file"
     return 1
@@ -71,11 +72,13 @@ remove_emp_by_id() {
   echo ""
   
   if confirm_action "Remove this employee?"; then
+    clear_screen
     awk -F'|' -v id="$id" '$1 != id' "$EMPLOYEES_FILE" > "$temp_file" \
       && mv "$temp_file" "$EMPLOYEES_FILE" \
       && display_message "success" "Employee removed successfully!" \
       || display_message "error" "Failed to remove employee."
   else
+    clear_screen
     display_message "info" "Employee not removed."
     rm -f "$temp_file"
   fi
@@ -94,6 +97,7 @@ remove_emp_by_line() {
   local total_lines=$(tail -n +2 "$EMPLOYEES_FILE" | wc -l)
   
   if [[ "$line_num" -lt 1 ]] || [[ "$line_num" -gt "$total_lines" ]]; then
+    clear_screen
     display_message "error" "Line number out of range."
     return 1
   fi
@@ -106,10 +110,12 @@ remove_emp_by_line() {
   echo ""
   
   if confirm_action "Remove this employee?"; then
+    clear_screen
     sed -i "${line_to_remove}d" "$EMPLOYEES_FILE" \
       && display_message "success" "Employee removed successfully!" \
       || display_message "error" "Failed to remove employee."
   else
+    clear_screen
     display_message "info" "Employee not removed."
   fi
 }

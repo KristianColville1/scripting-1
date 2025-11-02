@@ -94,6 +94,7 @@ remove_by_line() {
   local total_lines=$(tail -n +2 "$PRODUCTS_FILE" | wc -l)
   
   if [[ "$line_num" -lt 1 ]] || [[ "$line_num" -gt "$total_lines" ]]; then
+    clear_screen
     display_message "error" "Line number out of range."
     return 1
   fi
@@ -104,12 +105,14 @@ remove_by_line() {
   local line_to_remove=$((line_num + 1))  # +1 for header
   sed -n "${line_to_remove}p" "$PRODUCTS_FILE"
   echo ""
-  
+
   if confirm_action "Remove this product?"; then
+    clear_screen
     sed -i "${line_to_remove}d" "$PRODUCTS_FILE" \
       && display_message "success" "Product removed successfully!" \
       || display_message "error" "Failed to remove product."
   else
+    clear_screen
     display_message "info" "Product not removed."
   fi
 }

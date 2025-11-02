@@ -55,15 +55,19 @@ while true; do
   
   case "$choice" in
     1)
+      clear_screen
       handle_products_portal
       ;;
     2)
+      clear_screen
       handle_employees_portal
       ;;
     3)
+      clear_screen
       handle_tickets_portal
       ;;
     4)
+      clear_screen
       handle_orders_portal
       ;;
     5|[Ee][Xx][Ii][Tt]|[Qq])

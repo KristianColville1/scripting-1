@@ -16,11 +16,13 @@ add_employee_record() {
     check_exit "$id" && return 0
     
     if ! validate_numeric "$id"; then
+      clear_screen
       display_message "error" "Employee ID must be numeric."
       continue
     fi
     
     if grep -E -q "^${id}\|" "$EMPLOYEES_FILE"; then
+      clear_screen
       display_message "error" "Employee ID $id already exists."
       continue
     fi
@@ -32,6 +34,7 @@ add_employee_record() {
     read -r -p "Employee Name (or 'exit' to cancel): " name
     check_exit "$name" && return 0
     validate_not_blank "$name" && break
+    clear_screen
     display_message "error" "Employee Name cannot be blank."
   done
   
@@ -40,6 +43,7 @@ add_employee_record() {
     read -r -p "Role (or 'exit' to cancel): " role
     check_exit "$role" && return 0
     validate_not_blank "$role" && break
+    clear_screen
     display_message "error" "Role cannot be blank."
   done
   
@@ -48,6 +52,7 @@ add_employee_record() {
     read -r -p "Department (or 'exit' to cancel): " department
     check_exit "$department" && return 0
     validate_not_blank "$department" && break
+    clear_screen
     display_message "error" "Department cannot be blank."
   done
   
@@ -65,6 +70,7 @@ add_employee_record() {
         break
       fi
     else
+      clear_screen
       display_message "error" "Invalid email format."
     fi
   done
@@ -76,6 +82,7 @@ add_employee_record() {
     if validate_phone "$phone"; then
       break
     else
+      clear_screen
       display_message "error" "Invalid phone format (8-15 digits)."
     fi
   done
@@ -87,6 +94,7 @@ add_employee_record() {
     if validate_date "$hire_date"; then
       break
     else
+      clear_screen
       display_message "error" "Invalid date format. Use DD/MM/YYYY"
     fi
   done
@@ -105,10 +113,12 @@ add_employee_record() {
   echo -e "----------------------------------------------------------------"
   
   if confirm_action "Add this employee?"; then
+    clear_screen
     printf "%s|%s|%s|%s|%s|%s|%s\n" "$id" "$name" "$role" "$department" "$email" "$phone" "$hire_date" >> "$EMPLOYEES_FILE" \
       && display_message "success" "Employee added successfully!" \
       || display_message "error" "Failed to write to employees file."
   else
+    clear_screen
     display_message "info" "Employee not added."
   fi
 }
